@@ -6,7 +6,7 @@ We are not able to deploy using AWS CLI tools. We receive this error:
 ## How ?
 ### To test locally
 * Install Docker
-* Run `$ docker pull terahorse/maintenance` 
-* Access http://localhost:5000 
+* Run `$  sudo docker run -p 80:5000 --name test terahorse/maintenance` 
+* Access http://localhost
 
 
