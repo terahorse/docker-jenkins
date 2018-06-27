@@ -1,8 +1,12 @@
 # Docker Image for Maintenance Page
-## Why
-TODO
+## Why ?
+We need a workaround to deploy docker on AWS Elastic Beanstalk.
+We are not able to deploy using AWS CLI tools. We receive this error:
 
-## How
-TODO
+## How ?
+### To test locally
+* Install Docker
+* Run `$ docker pull terahorse/maintenance` 
+* Access http://localhost:5000 
 
 
