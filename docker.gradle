@@ -1,36 +1,36 @@
 task stopContainer(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", "docker stop hello || true"
+        args "-c", "docker stop maintenance || true"
     }
 }
 
 task deleteContainer(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", 'docker rm hello || true'
+        args "-c", 'docker rm maintenance || true'
     }
 }
 
 task deleteImage(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", 'docker rmi topera/hello || true'
+        args "-c", 'docker rmi terahorse/maintenance || true'
     }
 }
 
 task createImage(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", 'docker build -t topera/hello .'
+        args "-c", 'docker build -t terahorse/maintenance .'
     }
 }
 
 task runContainer(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", 'docker run -d -p 8080:8080 --name hello topera/hello'
+        args "-c", 'docker run -d -p 5000:5000 --name maintenance terahorse/maintenance'
     }
 }
 
 task publishImage(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", 'docker push topera/hello'
+        args "-c", 'docker push terahorse/maintenance'
     }
 }
 

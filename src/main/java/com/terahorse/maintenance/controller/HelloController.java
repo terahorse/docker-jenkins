@@ -1,4 +1,4 @@
-package com.topera.hello.controller;
+package com.terahorse.maintenance.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class HelloController {
 
-    @RequestMapping("/test")
+    @RequestMapping("/")
     public String test() {
-        return "working!";
+        return "Under Maintenance";
     }
 
 }
