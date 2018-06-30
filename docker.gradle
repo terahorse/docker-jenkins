@@ -24,7 +24,7 @@ task createImage(type: Exec, group: 'docker') {
 
 task runContainer(type: Exec, group: 'docker') {
     doFirst { executable "sh"
-        args "-c", 'docker run -d -p 5000:5000 --name maintenance terahorse/maintenance'
+        args "-c", 'docker run -d -p 5000:5000 -e MESSAGE="My custom maintenance message" --name maintenance terahorse/maintenance'
     }
 }
 

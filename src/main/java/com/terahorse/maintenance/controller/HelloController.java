@@ -8,7 +8,11 @@ class HelloController {
 
     @RequestMapping("/")
     public String test() {
-        return "Under Maintenance";
+        String message = System.getenv("MESSAGE");
+        if (message == null) {
+            return "Under Maintenance";
+        }
+        return message;
     }
 
 }
