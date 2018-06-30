@@ -11,7 +11,7 @@ To solve this kind of problem we created a generic Docker Maintenance page.
 * Run `$  sudo docker run -p 80:5000 terahorse/maintenance` 
 * Access http://localhost
 * If you want to customize the message just add `-e` parameter, like this:
-  * `$ docker run -p 80:5000 -e MESSAGE="My custom maintenance message" terahorse/maintenance`
+  * `$ sudo docker run -p 80:5000 -e MESSAGE="My custom maintenance message" terahorse/maintenance`
 
 ### To deploy on AWS using Elasic Beanstalk
 * Just copy the file `Dockerrun.aws.json` to your repository and run `eb cli` tool.
