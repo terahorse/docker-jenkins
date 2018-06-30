@@ -1,21 +1,19 @@
 # Docker Image for Maintenance Page
-## Why ?
-We need a workaround to deploy docker on AWS Elastic Beanstalk.
-We are not able to deploy using AWS CLI tools. We receive this error:
-`Error response from daemon: You cannot remove a running container`
+## What is this
+Sometimes you just need a generic maintenance message while you are replacing one Docker image with another.
+Or you just want to **undeploy** a docker from AWS Elastic Beanstalk and this seems to be not possible.
 
-Stackoverflow discussion:
-https://stackoverflow.com/questions/50848662/how-can-i-stop-a-docker-container-in-aws-elastic-beanstalk
+To solve this kind of problem we created a generic Docker Maintenance page.
 
-So the idea is to deploy image A(v1) → image B (maintenance page) → image A(v2)
-
-## How ?
+## How to use it
 ### To test locally
 * Install Docker
-* Run `$  sudo docker run -p 80:5000 --name test terahorse/maintenance` 
+* Run `$  sudo docker run -p 80:5000 terahorse/maintenance` 
 * Access http://localhost
+* If you want to customize the message just add `-e` parameter, like this:
+  * `$ docker run -p 80:5000 -e MESSAGE="My custom maintenance message" terahorse/maintenance`
 
-### To deploy on AWS
-* Just copy the file `Dockerrun.aws.json` to your repository and run eb cli tool.
+### To deploy on AWS using Elasic Beanstalk
+* Just copy the file `Dockerrun.aws.json` to your repository and run `eb cli` tool.
 
 
