@@ -1,7 +1,7 @@
 # Docker Image with Jenkins + Docker (and some extra tools)
 ## Summary
 This is an extension of the official Jenkins image.
-This Jenkins cames with pre-installed:
+This Jenkins comes with pre-installed:
 * Docker
 * Sass 
 
