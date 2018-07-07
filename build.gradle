@@ -28,7 +28,7 @@ task createImage(type: Exec, group: group) {
 
 task runContainer(type: Exec, group: group) {
     doFirst { executable "sh"
-        args "-c", "docker run -d --name $image $user/$image"
+        args "-c", "docker run -p 8080:8080 --privileged=true -d --name $image $user/$image"
     }
 }
 

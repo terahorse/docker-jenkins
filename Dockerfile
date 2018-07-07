@@ -1,4 +1,5 @@
 FROM jenkins/jenkins:2.130-slim
+EXPOSE 8080
 
 USER root
 
@@ -15,8 +16,11 @@ RUN apt install docker-ce -y
 # install sass
 RUN apt install sass -y
 
-USER jenkins
+# prepare init script and entry point
+RUN echo "service docker start" >> /usr/local/bin/init.sh
+RUN echo "/usr/local/bin/jenkins.sh" >> /usr/local/bin/init.sh
+RUN chmod +x /usr/local/bin/init.sh
 
-EXPOSE 8080
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/init.sh"]
 
 
