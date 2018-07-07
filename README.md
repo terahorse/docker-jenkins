@@ -1,5 +1,12 @@
-# Docker Image for Jenkins (with extra tools)
+# Docker Image with Jenkins + Docker (and some extra tools)
 ## Summary
-This is an extension of official Jenkins image, with sass and docker installed on it.
+This is an extension of the official Jenkins image.
+This Jenkins cames with pre-installed:
+* Docker
+* Sass 
+
 To see more details please check Dockerfile.
 
+## Install
+Run like any other Jenkins image, pulling from our Docker Hub:
+* `docker run -d --name myCustomJenkins terahorse/jenkins`
