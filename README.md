@@ -8,5 +8,5 @@ This Jenkins comes with pre-installed:
 To see more details please check Dockerfile.
 
 ## Install
-Run like any other Jenkins image, pulling from our Docker Hub:
-* `docker run -d --name myCustomJenkins terahorse/jenkins`
+Run this command
+* `sudo docker run --privileged=true -d --name jenkins -v ~/jenkins:/var/jenkins_home -p 8080:8080 terahorse/jenkins`
