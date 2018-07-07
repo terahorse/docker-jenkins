@@ -1,16 +1,45 @@
-plugins {
-    id 'idea'
-    id 'java'
-    id 'org.springframework.boot' version '2.0.1.RELEASE'
+def group = "docker"
+def user = "terahorse"
+def image = "jenkins"
+
+task stopContainer(type: Exec, group: group) {
+    doFirst { executable "sh"
+        args "-c", "docker stop $image || true"
+    }
 }
 
-repositories {
-    jcenter()
+task deleteContainer(type: Exec, group: group) {
+    doFirst { executable "sh"
+        args "-c", "docker rm $image || true"
+    }
 }
 
-dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web:2.0.1.RELEASE"
+task deleteImage(type: Exec, group: group) {
+    doFirst { executable "sh"
+        args "-c", "docker rmi $user/$image || true"
+    }
 }
 
-apply from: 'docker.gradle'
+task createImage(type: Exec, group: group) {
+    doFirst { executable "sh"
+        args "-c", "docker build -t $user/$image ."
+    }
+}
 
+task runContainer(type: Exec, group: group) {
+    doFirst { executable "sh"
+        args "-c", "docker run -d --name $image $user/$image"
+    }
+}
+
+task publishImage(type: Exec, group: group) {
+    doFirst { executable "sh"
+        args "-c", "docker push $user/$image"
+    }
+}
+
+publishImage { dependsOn createImage }
+runContainer { dependsOn createImage }
+createImage { dependsOn deleteImage }
+deleteImage { dependsOn deleteContainer }
+deleteContainer { dependsOn stopContainer }
